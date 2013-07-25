@@ -1,0 +1,43 @@
+<h1>つぶやき一覧</h1>
+
+<h2><%= link_to 'つぶやく', new_user_tweet_path %></h2>
+
+<table style="float:left;">
+  <tr>
+    <th>User</th>
+    <th>Tweet</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_tweets.each do |user_tweet| %>
+  <tr>
+    <td><%= user_tweet.user.name %></td>
+    <td><%= user_tweet.tweet %></td>
+    <td><%= link_to 'Show', user_tweet %></td>
+    <td><%= link_to 'Edit', edit_user_tweet_path(user_tweet) %></td>
+    <td><%= link_to 'Destroy', user_tweet, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<table style="float:right;">
+  <tr>
+    <th>User</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= link_to 'follow', user %></td>
+    <td><%= link_to 'unfollow', user %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
