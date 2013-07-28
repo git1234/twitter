@@ -4,6 +4,8 @@ class UserTweetsController < ApplicationController
   def index
     @user_tweets = UserTweet.all
     @users = User.all
+    @relations = Relation.all
+    logger.debug("^^^^^^^#{@relations}")
 
     respond_to do |format|
       format.html # index.html.erb

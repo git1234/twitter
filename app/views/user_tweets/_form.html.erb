@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field"  style="display:none;">
     おそらくここはsessionを入れておいて隠しておく必要がある。
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id, value: session[:login] %>
   </div>
   <div class="field">
     <%= f.label :tweet %><br />

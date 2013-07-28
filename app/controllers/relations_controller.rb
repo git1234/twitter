@@ -1,8 +1,10 @@
+#encoding: utf-8
 class RelationsController < ApplicationController
   # GET /relations
   # GET /relations.json
   def index
     @relations = Relation.all
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,11 +42,15 @@ class RelationsController < ApplicationController
   # POST /relations
   # POST /relations.json
   def create
-    @relation = Relation.new(params[:relation])
+    if params[:following_id]
+      @relation = Relation.new(following_id: params[:following_id], followed_id: params[:followed_id])
+    else
+      @relation = Relation.new(params[:relation])
+    end
 
     respond_to do |format|
       if @relation.save
-        format.html { redirect_to @relation, notice: 'Relation was successfully created.' }
+        format.html { redirect_to user_tweets_path, notice: 'フォローしました！' }
         format.json { render json: @relation, status: :created, location: @relation }
       else
         format.html { render action: "new" }
@@ -72,7 +78,11 @@ class RelationsController < ApplicationController
   # DELETE /relations/1
   # DELETE /relations/1.json
   def destroy
-    @relation = Relation.find(params[:id])
+    if params[:following_id]
+      @relation = Relation.where("following_id = ? and followed_id = ?", params[:following_id], params[:followed_id])
+    else
+      @relation = Relation.find(params[:id])
+    end
     @relation.destroy
 
     respond_to do |format|
