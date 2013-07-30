@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :password
   has_many :user_tweets
   has_many :relations
+  validates :name, presence: :true 
 
   def encrypt_password
     if self.password.present?
