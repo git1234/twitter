@@ -1,7 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :html => { :multipart => true }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= @user.errors.count %>箇所エラーがあります。</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
@@ -18,6 +18,14 @@
   <div class="field">
     <%= f.label :password %><br />
     <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.label :profile %><br />
+    <%= f.text_area :profile %>
   </div>
   <div class="actions">
     <%= f.submit %>
