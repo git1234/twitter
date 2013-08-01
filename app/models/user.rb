@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :image, :name, :password, :profile, :avatar
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/system/missing/:style/missing.jpg"
+  has_attached_file :avatar, styles: { medium: "200x200>", thumb: "60x60>" }, default_url: "/system/missing/:style/missing.jpg"
 
   validates :name, presence: :true
   validates :password, presence: :true

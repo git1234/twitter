@@ -1,7 +1,7 @@
 <%= form_for(@user_tweet) do |f| %>
   <% if @user_tweet.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user_tweet.errors.count, "error") %> prohibited this user_tweet from being saved:</h2>
+      <h2><%= @user_tweet.errors.count %>箇所エラーがあります。</h2>
 
       <ul>
       <% @user_tweet.errors.full_messages.each do |msg| %>

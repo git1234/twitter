@@ -7,12 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div style="float:right;">
-	<% if session[:login] %>
-		<%= "id=#{session[:login]}のユーザーがログイン中" %>
-		<%= link_to "log out", logins_destroy_path, method: :delete %>
-	<% end %>
-	</div>
+	<div>
+		<span style="float:right;"> 
+			<% if session[:login] %>
+			<%= "id=#{session[:login]}のユーザーがログイン中" %>
+			<%= button_to "log out", logins_destroy_path, :method=>:delete, :class=>:destroy %>
+		<% end %>
+		</span>
+		<span style="float:left;"> 
+			<ul style="list-style:none;">
+			<li class="header" style="float:left;"><%= link_to "つぶやき一覧　", user_tweets_path %></li>
+			<li class="header" style="float:left;"><%= link_to "ユーザープロフィール　", users_path %></li>
+			<li class="header" style="float:left;"><%= link_to "フォロー", relations_path %></li>
+			</ul>
+		</span>
+	</div><br>
+
 
 <%= yield %>
 
