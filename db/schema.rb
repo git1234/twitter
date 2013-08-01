@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723234148) do
+ActiveRecord::Schema.define(:version => 20130731231844) do
 
   create_table "relations", :force => true do |t|
     t.integer  "following_id"
@@ -27,11 +27,7 @@ ActiveRecord::Schema.define(:version => 20130723234148) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'attachment' for column 'image'
 
 end

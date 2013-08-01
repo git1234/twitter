@@ -1,4 +1,7 @@
 Twitter::Application.routes.draw do
+  resources :users
+  get "users/download"
+
   get "logins/new"
 
   post "logins/create"
@@ -8,8 +11,6 @@ Twitter::Application.routes.draw do
   resources :relations
 
   resources :user_tweets
-
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
