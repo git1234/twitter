@@ -10,7 +10,7 @@
 	<div style="float:right;">
 	<% if session[:login] %>
 		<%= "id=#{session[:login]}のユーザーがログイン中" %>
-		<%= link_to "log out", logins_destroy_path, method: :delete %>
+		<%= button_to "log out", logins_destroy_path, :method=>:delete, :class=>:destroy %>
 	<% end %>
 	</div>
 

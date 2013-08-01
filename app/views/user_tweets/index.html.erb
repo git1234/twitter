@@ -34,13 +34,15 @@
   <tr>
     <% if session[:login] != user.id %>
       <td><%= user.name %></td>
-      <td><%= link_to 'follow', relations_path(following_id: session[:login], followed_id: user.id), method: :post %></td>
+     <!-- <td>< link_to 'follow', relations_path(following_id: session[:login], followed_id: user.id), method: :post %></td>-->
+      <td><%= button_to "フォロー", relations_path(following_id: session[:login], followed_id: user.id), method: :post %></td>
     <% end %>
   </tr>
 <% end %>
 </table>
 <br>
-<%= link_to "フォローしている友人を解除", relations_path %>
+<!-- < link_to "フォローしている友人を解除", relations_path %>-->
+<%= button_to "フォローしている友人を解除", relations_path, method: :get %>
 </div>
 <br />
 
