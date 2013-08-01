@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: :true
   validates :password, presence: :true
-  # validates_attachment :avatar, presence: true,
-  #   content_type: { content_type: ["image/jpg", "image/png"] },
-  #   size: { less_than: 2.megabytes }
 
   def encrypt_password
     if self.password.present?
