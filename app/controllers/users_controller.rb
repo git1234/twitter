@@ -81,17 +81,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def download
-    @user = User.find(params[:id])
-    send_data(@user.image, :disposition => 'inline')
-  end
-
   private
 
     # Use this method to whitelist the permissible parameters. Example:
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def user_params
-      params.require(:user).permit(:image, :name, :password, :profile)
+      params.require(:user).permit(:name, :password, :profile, )
     end
 end

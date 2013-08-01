@@ -1,7 +1,7 @@
-<%= form_for(@user, :html => { :multipart => true }) do |f| %>
+<%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @user.errors.count %>箇所エラーがあります。</h2>
+      <h2><%= @user.errors.count %> 箇所エラーがあります。</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>

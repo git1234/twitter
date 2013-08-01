@@ -3,11 +3,9 @@
 one:
   name: MyString
   password: MyString
-  image: 
   profile: MyText
 
 two:
   name: MyString
   password: MyString
-  image: 
   profile: MyText
