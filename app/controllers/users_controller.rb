@@ -53,8 +53,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.json
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
 
@@ -80,4 +80,18 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def download
+    @user = User.find(params[:id])
+    send_data(@user.image, :disposition => 'inline')
+  end
+
+  private
+
+    # Use this method to whitelist the permissible parameters. Example:
+    # params.require(:person).permit(:name, :age)
+    # Also, you can specialize this method with per-user checking of permissible attributes.
+    def user_params
+      params.require(:user).permit(:image, :name, :password, :profile)
+    end
 end

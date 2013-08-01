@@ -6,8 +6,13 @@
 </p>
 
 <p>
-  <b>Password:</b>
-  <%= @user.password %>
+  <b>Image:</b>
+  <%= image_tag @user.avatar.url(:thumb) %>
+</p>
+
+<p>
+  <b>Profile:</b>
+  <%= @user.profile %>
 </p>
 
 

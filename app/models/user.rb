@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
+  attr_accessible :image, :name, :password, :profile, :avatar
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/system/missing/:style/missing.jpg"
 
-  attr_accessible :name, :password
-  has_many :user_tweets
-  has_many :relations
+  validates :name, presence: :true
+  validates :password, presence: :true
 
   def encrypt_password
     if self.password.present?
