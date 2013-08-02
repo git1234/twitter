@@ -35,8 +35,11 @@
   <tr>
     <% if session[:login] != user.id %>
       <td><%= user.name %></td>
-     <!-- <td>< link_to 'follow', relations_path(following_id: session[:login], followed_id: user.id), method: :post %></td>-->
-      <td><%= button_to "フォロー", relations_path(following_id: session[:login], followed_id: user.id), method: :post %></td>
+      <% if @user_tweets.assoc(user.id) != nil %>
+        <td>フォロー中</td>
+      <% else %>
+        <td><%= button_to "フォロー", relations_path(following_id: session[:login], followed_id: user.id), method: :post, id: user.id %></td>
+      <% end -%>
     <% end %>
   </tr>
 <% end %>
