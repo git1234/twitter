@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :user_tweets
+  has_many :relations
   attr_accessible :image, :name, :password, :profile, :avatar
   has_attached_file :avatar, styles: { medium: "200x200>", thumb: "60x60>" }, default_url: "/system/missing/:style/missing.jpg"
 
