@@ -6,18 +6,19 @@
 <table style="float:left;">
   <tr>
     <th>User</th>
-    <th>Tweet</th>
+    <th>つぶやき</th>
     <th></th>
     <th></th>
   </tr>
-
-<% @user_tweets.each do |user_tweet| %>
-  <tr>
-    <td><%= user_tweet.user.name %></td>
-    <td><%= user_tweet.tweet %></td>
-    <td><%= link_to 'Edit', edit_user_tweet_path(user_tweet) %></td>
-    <td><%= link_to 'Destroy', user_tweet, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if @our_user_tweets %>
+  <% @our_user_tweets.each do |user_tweet| %>
+    <tr>
+      <td><%= user_tweet.user.name %></td>
+      <td><%= user_tweet.tweet %></td>
+      <td><%= link_to 'Edit', edit_user_tweet_path(user_tweet) %></td>
+      <td><%= link_to 'Destroy', user_tweet, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
 <% end %>
 </table>
 

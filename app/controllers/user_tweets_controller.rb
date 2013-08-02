@@ -2,7 +2,12 @@ class UserTweetsController < ApplicationController
   # GET /user_tweets
   # GET /user_tweets.json
   def index
-    @user_tweets = UserTweet.all
+    @our_user_tweets = UserTweet.all
+    @user_tweets = []
+    user_follow = Relation.where(following_id: session[:login])
+    user_follow.each do |login_followed_id|
+      @user_tweets << UserTweet.where(user_id: login_followed_id)
+    end
     @users = User.all
     @relations = Relation.all
 
